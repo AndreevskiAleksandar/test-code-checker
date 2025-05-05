@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <title>Test Code Checker</title>
   <script>
-    document.readyState(() => {
+    (() => {
       const query = window.location.search;
       document.getElementById('code').textContent = query ?? '';
-    });
+    })();
   </script>
 </head>
 <body>
