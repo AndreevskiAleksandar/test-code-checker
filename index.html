@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <meta charset="UTF-8" />
-  <title>Test Code Checker</title>
-  <script>
-    (() => {
-      const query = window.location.search;
-      document.getElementById('code').textContent = query ?? '';
-    })();
-  </script>
-</head>
-<body>
-  <h1>Code Checker</h1>
-  <h2 id="code"></h2>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Test Code Checker</title>
+    <script>
+      window.onload = function() {
+        const query = window.location.search;
+        document.getElementById('code').innerText = query ?? '';
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Code Checker</h1>
+    <h2 id="code"></h2>
+  </body>
 </html>
