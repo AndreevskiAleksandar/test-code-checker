@@ -1,27 +1,155 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Test Code Checker</title>
-    <style>
-      html {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        background: #fff;
-        padding: 0;
-        margin: 0;
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Authenticating - Rotating Arcs</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fdf9fc;
+      color: #36102D;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .auth-wrapper {
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+
+    .center-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: #36102D;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      box-shadow: 0 0 4px #36102Daa;
+    }
+
+    .user-icon {
+      width: 50px;
+      height: 50px;
+    }
+
+    .user-icon path {
+      stroke: white;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* The SVG container for arcs */
+    .arcs-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 180px;
+      height: 180px;
+      transform-origin: center;
+      transform-style: preserve-3d;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    /* Arc paths */
+    svg {
+      width: 180px;
+      height: 180px;
+      overflow: visible;
+    }
+
+    .arc1 {
+      fill: none;
+      stroke: #68275a;
+      stroke-width: 6;
+      stroke-linecap: round;
+      filter: drop-shadow(0 0 1px #36102D);
+      transform-origin: 90px 90px;
+      animation: rotate-clockwise 3s linear infinite;
+    }
+
+    .arc2 {
+      fill: none;
+      stroke: #521745;
+      stroke-width: 6;
+      stroke-linecap: round;
+      filter: drop-shadow(0 0 2px #36102Daa);
+      transform-origin: 90px 90px;
+      animation: rotate-counterclockwise 4s linear infinite;
+    }
+
+    @keyframes rotate-clockwise {
+      from {
+        transform: rotate(0deg);
       }
-      body {
-        height: 100%;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        overflow: hidden;
+      to {
+        transform: rotate(360deg);
       }
-    </style>
-  </head>
-  <body>
-    <h1>REDIRECTED PAGE</h1>
-  </body>
+    }
+    @keyframes rotate-counterclockwise {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(-360deg);
+      }
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #6f4a61;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-wrapper">
+    <div class="center-circle">
+      <svg class="user-icon" viewBox="0 0 24 24">
+        <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+      </svg>
+    </div>
+
+    <div class="arcs-container">
+      <svg viewBox="0 0 180 180" >
+        <!-- Arc 1: radius 75 -->
+        <path
+          class="arc1"
+          d="M 90 15
+             A 75 75 0 0 1 165 90"
+        />
+      </svg>
+
+      <svg viewBox="0 0 180 180" style="position:absolute; top:0; left:0;">
+        <!-- Arc 2: radius 80 -->
+        <path
+          class="arc2"
+          d="M 90 170
+             A 80 80 0 0 1 10 90"
+        />
+      </svg>
+    </div>
+  </div>
+  <h1>Authenticating...</h1>
+</body>
 </html>
